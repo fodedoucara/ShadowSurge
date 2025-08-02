@@ -31,11 +31,18 @@ public class PlayerMove : MonoBehaviour
         print("value = " + Input.GetAxis("Vertical"));
         if (Input.GetAxis("Vertical") > 0)
         {
+            Vector3 moveDirection = transform.forward;
+            moveDirection.y -= gravity * Time.deltaTime;
+
+            charController.Move(moveDirection * movement_speed * Time.deltaTime);   
 
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
+            Vector3 moveDirection = -transform.forward;
+            moveDirection.y -= gravity * Time.deltaTime;
 
+            charController.Move(moveDirection * movement_speed * Time.deltaTime);   
         }
     }
 }
